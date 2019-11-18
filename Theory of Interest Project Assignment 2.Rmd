@@ -13,10 +13,12 @@ Num_periods <- n*12
 #The monthly payment size is calculated so that the payments are made each month for the loan
 Payment_Size <- (L * monthly_rate)/(1-(1+monthly_rate)^(-Num_periods))
 
+#The row vector is created to use for the for loop
 amortization_table <- c(0, 0, L)
 
 Outstanding_Balance <- L
 
+#A for loop is created to make an amortization table for calculating the loan 
 for(time in 1:Num_periods){
   Interest_Pmt <- Outstanding_Balance*monthly_rate
   Principal_Pmt <- Payment_Size-Interest_Pmt
@@ -24,6 +26,8 @@ for(time in 1:Num_periods){
   Newrow <- c(Interest_Pmt, Principal_Pmt, Outstanding_Balance)
   amortization_table <- rbind(amortization_table, Newrow)
 }
+
+#Both row and column names are added in to specify what each column stands for
 colnames(amortization_table) <- c("Interest", "Payment size", "Outsanding Balance")
 rownames(amortization_table) <- c("start", 1:Num_periods)
 print(amortization_table)
