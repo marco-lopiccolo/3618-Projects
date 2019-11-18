@@ -1,3 +1,4 @@
+```{r}
 #The values for the term payments of 10 were set to n, L is the loan size and i is the effective annual interest rate
 n <- 10
 L <- 200000
@@ -25,3 +26,4 @@ for(time in 1:Num_periods){
 }
 
 amortization_table
+```
