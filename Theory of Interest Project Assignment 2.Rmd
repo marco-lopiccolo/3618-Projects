@@ -24,6 +24,7 @@ for(time in 1:Num_periods){
   Newrow <- c(Interest_Pmt, Principal_Pmt, Outstanding_Balance)
   amortization_table <- rbind(amortization_table, Newrow)
 }
-
-amortization_table
+colnames(amortization_table) <- c("Interest", "Payment size", "Outsanding Balance")
+rownames(amortization_table) <- c("start", 1:Num_periods)
+print(amortization_table)
 ```
