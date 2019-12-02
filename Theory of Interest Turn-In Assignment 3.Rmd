@@ -1,0 +1,41 @@
+title: Theory of Interest Project Assignment 3
+author: Marco LoPiccolo, Wyatt Deem, Kevin Klinkoski
+
+```{r}
+
+#The number of years until redemption is set to n, C is both the par value and redemption value of the bond, r is the annual coupon rate, and i is the nominal annual rate convertible semiannually
+n <- 10
+C <- 10000
+r <- 0.06
+i <- 0.04
+
+#The values above are converted to be semiannual
+semi_annual_yield <- i/2
+semi_annual_coupon <- r/2
+num_periods <- n * 2
+
+#The size of each coupon payable semiannually is calculated
+coupon_size <- C * semi_annual_coupon
+
+#The book value is calculated, and then used in a row vector created for use in the for loop
+P <- (coupon_size * ((1-((1+semi_annual_yield)^-20))/semi_annual_yield)) + C * ((1+semi_annual_yield)^-20)
+
+bond_table <- c(0, 0, P)
+
+Book_Value <- P
+
+#A for loop is created to make a bond ammortization table for calculating the bond
+for(time in 1:num_periods){
+  Interest_Pmt <- Book_Value * semi_annual_yield
+  Principal_Pmt <- coupon_size - Interest_Pmt
+  Book_Value <- Book_Value - Principal_Pmt
+  Newrow <- c(Interest_Pmt, Principal_Pmt, Book_Value)
+  bond_table <- rbind(bond_table, Newrow)
+}
+
+#Row and column names are added to specify what each value means
+colnames(bond_table) <- c("Interest", "Payment size", "Book Value")
+rownames(bond_table) <- c("start", 1:num_periods)
+print(bond_table)
+
+```
