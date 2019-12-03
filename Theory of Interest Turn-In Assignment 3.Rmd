@@ -37,5 +37,6 @@ for(time in 1:num_periods){
 colnames(bond_table) <- c("Interest", "Payment size", "Book Value")
 rownames(bond_table) <- c("start", 1:num_periods)
 print(bond_table)
+print(Book_Value)
 
 ```
