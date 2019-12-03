@@ -18,7 +18,7 @@ num_periods <- n * 2
 coupon_size <- C * semi_annual_coupon
 
 #The book value is calculated, and then used in a row vector created for use in the for loop
-P <- (coupon_size * ((1-((1+semi_annual_yield)^-20))/semi_annual_yield)) + C * ((1+semi_annual_yield)^-20)
+P <- (coupon_size * ((1-((1+semi_annual_yield)^-num_periods))/semi_annual_yield)) + C * ((1+semi_annual_yield)^-num_periods)
 
 bond_table <- c(0, 0, P)
 
